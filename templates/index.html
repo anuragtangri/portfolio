@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .work-experience {
+            text-align: center;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .work-experience ul {
+            list-style-type: disc;
+            display: inline-block;
+            text-align: left;
+            max-width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .work-experience ul li {
+            margin-bottom: 10px;
+        }
+
+        .blog-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-left: 20px;
+        }
+
+        .blog-button:hover {
+            background-color: #45a049;
+        }
+
+        header p {
+            margin-bottom: 20px;
+        }
+    </style>
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1> ANURAG TANGRI </h1>
+        <p> Backend Engineer | Problem Solver</p>
+        <a href="{{ url_for('blog') }}" class="blog-button">Visit My Blog</a>
+    </header>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <h2>About Me</h2>
+            <p> Experienced Backend Engineer with over 5 years of expertise in designing, developing, and optimizing large-scale distributed systems. Skilled in building high-performance microservices, API development, cloud infrastructure, and database management. Proficient in backend technologies, including Golang, Python, Kubernetes, and cloud platforms like AWS,OCI etc.</p>
+            <ul class="about-list">
+                <li> Interests - Backend Engineering, Databases, Cloud, Automation. </li>
+                <li> Strengths - Strong skills in Data structures and Algorithms, System Design.</li>
+                <li> Achievements - ACM-ICPC Chennai Regionals in 2019, Ranked 51 out of 150 teams. </li>
+            </ul>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="Skills" class="projects">
+            <h2>Skills</h2>
+            <div class="project-cards">
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='Images/go.png') }}" alt="Go">
+                </div>
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='Images/k8s.png') }}" alt="Kubernetes">
+                </div>
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='Images/python.png') }}" alt="Python">
+                </div>
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='Images/mysql.png') }}" alt="MySQL">
+                </div>
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='Images/docker.png') }}" alt="Docker">
+                </div>
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='Images/aws.png') }}" alt="AWS">
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="experience-section">
+            <h2>Work Experience</h2>
+            <div class="work-experience">
+                <h3>
+                    <img src="{{ url_for('static', filename='Images/juniper.png') }}" alt="Juniper Networks Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+                    Juniper Networks
+                </h3>
+                <ul>
+                    <li>Led the design and development of a microservice responsible for deployment of contrail networking solution in single/multi-cluster K8s distributions, effectively handling ~10,000 requests per day.</li>
+                    <li>Designed APIs in Go responsible for application installation, scaling, deployment, and software upgrades.</li>
+                    <li>Implemented Pre/Post-flight as K8’s operators for deployments on single/multi-cluster setups, improving cluster health and reliability.</li>
+                    <li>Developed a feature in a multithreaded application handling ~65k concurrent requests per second, exporting telemetry data to customers while adapting to increased load during runtime and keeping CPU utilization in check.</li>
+                    <li>Implemented feature tests with Robot Framework by writing Toby scripts automating more than 100 tests.</li>
+                </ul>
+
+                <h3>
+                    <img src="{{ url_for('static', filename='Images/splunk.png') }}" alt="Splunk Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+                    Splunk
+                </h3>
+                <ul>
+                    <li>Collaborated with teams to develop an alerting system that monitors the health of distributed clusters, optimizing response times by 25%.</li>
+                    <li>Contributed to the creation of a centralized logging solution that reduced troubleshooting times by 40% across 10+ teams.</li>
+                </ul>
+                <h3>
+                    <img src="{{ url_for('static', filename='Images/kreditbee.png') }}" alt="Kreditbee Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+                    Kreditbee
+                </h3>
+                <ul>
+                    <li>Designed and developed REST APIs for a WhatsApp microservice in Golang running on AWS Lambda instance, sending ~1 million loan reminder messages to customers per day.</li>
+                    <li>Programmed a bulk upload functionality for sending messages to 1 million users concurrently, enabling collection agents to upload a CSV file with customer information, which in turn triggers the microservice to send reminder messages to customers.</li>
+                    <li>Added a scheduled message functionality which led to a 20% increase in loan repayments, letting agents schedule reminder messages for a particular time of the day.</li>
+                    <li>Developed a notification functionality to notify the agents whenever a customer replies, leading to more than 90% increase in response time.</li>
+                </ul>
+
+                <h3>
+                    <img src="{{ url_for('static', filename='Images/oracle.png') }}" alt="Oracle Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+                    Oracle
+                </h3>
+                <ul>
+                    <li>Deployed LTE nodes as Docker containers on the cloud and ensured high availability and reliability using Kubernetes, reducing service downtime by 90%.</li>
+                    <li>Maintained microservices in Kubernetes cluster on Oracle Cloud in both production and development environments and used Elasticsearch to trigger and monitor health checks, leading to service being available 99.99% of the time.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2>Contact Me</h2>
+            <p>If you’d like to collaborate or hire me for a project, feel free to reach out!</p>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/anuragtangri/" class="linkedin" target="_blank">LinkedIn</a>
+                <a href="{{ url_for('static', filename='resume.pdf') }}" class="resume" target="_blank">Download Resume</a>
+                <a href="mailto:anurag.tang@gmail.com" class="gmail-button">Email Me</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 My Portfolio | Built with passion by <a href="https://github.com"> ANURAG TANGRI </a></p>
+    </footer>
+</body>
+</html>

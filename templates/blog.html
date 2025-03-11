@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --link-color: #007bff;
+            --button-bg: #007bff;
+            --button-text: #ffffff;
+        }
+
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #ffcc00;
+            --link-color: #ffcc00;
+            --button-bg: #ffcc00;
+            --button-text: #000000;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 5px;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .reading-list {
+            margin-top: 20px;
+        }
+
+        input, button {
+            margin-top: 10px;
+            padding: 8px;
+        }
+
+        button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .checkbox {
+            margin-right: 10px;
+        }
+
+        .admin-section {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+    <h1>My Blog</h1>
+
+    <p>Welcome to my blog! Here you'll find my latest thoughts and updates.</p>
+
+    <h2>Reading List</h2>
+
+    <!-- Admin Section: Only visible if URL has "?admin=true" -->
+    <div class="admin-section" id="adminSection">
+        <input type="text" id="linkInput" placeholder="Enter URL..." />
+        <button onclick="addLink()">Add Link</button>
+        <button onclick="removeSelectedLinks()">Remove Selected</button>
+    </div>
+
+    <ul id="linksList">
+        <!-- Links will be displayed here -->
+    </ul>
+
+    <script>
+        // Function to check if "admin=true" is in the URL
+        function checkAdminAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get("admin") === "true") {
+                document.getElementById("adminSection").style.display = "block";
+            }
+        }
+
+        function loadDarkMode() {
+        const darkModePreference = localStorage.getItem("darkMode");
+        
+        // If no preference is set, enable dark mode by default
+        if (darkModePreference === null || darkModePreference === "enabled") {
+            document.body.classList.add("dark-mode");
+            localStorage.setItem("darkMode", "enabled");
+        }
+
+        // Update button text based on mode
+        document.querySelector(".dark-mode-toggle").innerText = 
+            document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    }
+
+    // Toggle dark mode
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const isDarkMode = document.body.classList.contains("dark-mode");
+        localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
+
+        document.querySelector(".dark-mode-toggle").innerText = isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode";
+    }
+
+
+        // Function to load links from local storage
+        function loadLinks() {
+            let links = JSON.parse(localStorage.getItem("readingList")) || [];
+            const linksList = document.getElementById("linksList");
+            linksList.innerHTML = "";
+
+            links.forEach((link, index) => {
+                let listItem = document.createElement("li");
+                listItem.innerHTML = `<input type="checkbox" class="checkbox" data-index="${index}">
+                                      <a href="${link}" target="_blank">${link}</a>`;
+                linksList.appendChild(listItem);
+            });
+        }
+
+        // Function to add a new link
+        function addLink() {
+            let linkInput = document.getElementById("linkInput");
+            let url = linkInput.value.trim();
+
+            if (url) {
+                let links = JSON.parse(localStorage.getItem("readingList")) || [];
+                links.push(url);
+                localStorage.setItem("readingList", JSON.stringify(links));
+                linkInput.value = "";
+                loadLinks();
+            } else {
+                alert("Please enter a valid URL.");
+            }
+        }
+
+        // Function to remove selected links
+        function removeSelectedLinks() {
+            let links = JSON.parse(localStorage.getItem("readingList")) || [];
+            let checkboxes = document.querySelectorAll(".checkbox:checked");
+
+            if (checkboxes.length === 0) {
+                alert("No links selected!");
+                return;
+            }
+
+            let newLinks = links.filter((_, index) => 
+                !Array.from(checkboxes).some(checkbox => parseInt(checkbox.dataset.index) === index)
+            );
+
+            localStorage.setItem("readingList", JSON.stringify(newLinks));
+            loadLinks();
+        }
+
+        // Load settings on page load
+        window.onload = function() {
+            loadDarkMode();
+            loadLinks();
+            checkAdminAccess(); // Check for secret admin mode
+        };
+    </script>
+
+</body>
+</html>

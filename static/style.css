@@ -1,0 +1,305 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    background-image: url('/static/Images/dynamic.png'); /* Corrected path */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #333;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+/* Header */
+header {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.2em;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 0.2em;
+}
+
+/* Navigation */
+header nav {
+    margin-top: 1em;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    color: #f4f4f9;
+}
+
+/* About Section */
+.about-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 50px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.about-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+.about-section p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    width: 70%;
+    margin: 0 auto;
+    color: #666;
+}
+
+/* Fix bullet points in About section */
+.about-section ul {
+    list-style-type: disc;
+    text-align: left;
+    max-width: 50%;
+    margin: 20px auto;
+    padding-left: 20px;
+}
+
+.about-section ul li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Skills Section */
+.projects {
+    background-color: rgba(249, 249, 249, 0.9);
+    padding: 50px 0;
+    text-align: center;
+}
+
+.projects h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+/* Skills Cards */
+.project-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 10px;
+}
+
+.project-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.project-card img {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Hover effect */
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Work Experience */
+.experience-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 50px 0;
+    text-align: center;
+}
+
+.experience-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.experience-section h3 {
+    font-size: 2em;
+    margin-top: 30px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.experience-section h3 img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Fix bullet points in Work Experience */
+.experience-section ul {
+    list-style-type: disc;
+    text-align: left;
+    max-width: 50%;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+
+.experience-section ul li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 50px 0;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.contact-section .social-links {
+    margin-top: 20px;
+}
+
+/* Social Links Buttons */
+.contact-section .social-links a {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px;
+    transition: background-color 0.3s;
+}
+
+/* LinkedIn */
+.contact-section .social-links .linkedin {
+    background-color: #0077b5;
+}
+
+.contact-section .social-links .linkedin:hover {
+    background-color: #005582;
+}
+
+/* Resume */
+.contact-section .social-links .resume {
+    background-color: #333;
+}
+
+.contact-section .social-links .resume:hover {
+    background-color: #555;
+}
+
+/* Gmail Button */
+.contact-section .social-links .gmail-button {
+    background-color: #D44638;
+}
+
+.contact-section .social-links .gmail-button:hover {
+    background-color: #B23121;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ddd;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 900px) {
+    .project-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-card {
+        width: 80%;
+    }
+
+    .about-section p, 
+    .experience-section p, 
+    .experience-section ul {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    header nav a {
+        margin: 0 10px;
+    }
+
+    .about-section h2, 
+    .projects h2, 
+    .contact-section h2, 
+    .experience-section h2 {
+        font-size: 1.8em;
+    }
+
+    .contact-section p {
+        font-size: 1em;
+    }
+
+    .experience-section h3 {
+        font-size: 1.6em;
+    }
+}
